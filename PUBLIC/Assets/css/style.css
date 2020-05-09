@@ -2,12 +2,20 @@ body {
     background-color: burlywood;
 }
 #inputBurger {
-    margin-top:50px;
+    margin-top:150px;
+    margin-bottom: 50px;
+    
+}
+#addBurger {
+   margin-top: 5px;
 }
 
 #burgersName {
-    height: 100px;
-    width: 300px;
+    height: 50px;
+    width: 500px;
+    border: 1px solid;
+    padding: 10px;
+    box-shadow:  0px 0px 10px 3px #888888;
 }
 
 #burgerPhoto {
@@ -15,9 +23,15 @@ body {
 }
 
 img{
-     margin: 40px auto;
+     margin: 0px auto;
+     width: 260px;
 }
 
 #burgerAddition {
    text-align: center;
+}
+
+.devouredBtn {
+    border: 1px gray 2px;
+    margin: 3px 0;
 }

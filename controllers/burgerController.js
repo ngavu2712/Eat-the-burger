@@ -17,7 +17,7 @@ app.post("/api/burgers", function (req,res) {
     })
 });
 
-app.put('/burger/:id', function (req,res){
+app.put('/burgers/:id', function (req,res){
     var condition = 'id = ' + req.params.id;
 
     burgers.updateOne({Devoured : true}, condition, function(burgerdb){

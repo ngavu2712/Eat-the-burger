@@ -4,20 +4,21 @@
     <div class="row">
           <div id="burgerPhoto" class="col-sm-12">
             <img src="Assets/css/image/hamburger.png">
-            <h2>Eat-Da-Burger</h2>
           </div>
     </div>
     <div class="row">
         <div class="col-sm-6">
       {{#each burgers}}
         
-        {{#unless Devoured}}
+        {{#unless this.Devoured}}
+            <div>
+                <form action="/burgers/{{this.id}}?_method=PUT" method = "POST">
+                        <button type="submit" class="devouredBtn" > {{this.Burger_name}}</button>
+                        <br>
+                </form>
+            </div>
 
-           {{Burger_name}}
-           <button class="devouredBtn">
-               Devoured!
-           </button>
-           <br>
+           
         {{/unless}}
 
 
@@ -28,10 +29,10 @@
             
          {{#each burgers}}
 
-            {{#if Devoured}}
-
+            {{#if this.Devoured}}
+            
                 {{Burger_name}}
-
+                
             {{/if}}
          {{/each}}
 
@@ -41,8 +42,11 @@
 
     <div class="row" id="inputBurger">
         <div id="burgerAddition" class="col-sm-12">
-            <input type="text" id="burgersName" placeholder ="What's burger is in your mind?">  
-            <button id="addBurger" type="button" class="btn btn-dark">Add Burger</button>
+            <form action ="/burgers" method="POST">
+            <input type="text" id="burgersName" placeholder ="What's burger is in your mind?"> 
+            <br> 
+            <button id="addBurger" type="submit" class="btn btn-dark">Add Burger</button>
+            </form>
         </div>
     </div>
 </div>
