@@ -1,4 +1,7 @@
-var burgers = require('../models/burger')
+var burgers = require('../models/burger');
+
+var express = require('express');
+
 
 function burgerController (app){
 
@@ -8,6 +11,9 @@ app.get("/", function(req,res){
     })
 })
 
+app.post("/api", function (req,res) {
+    burgers.insertOne([])
+})
 }
 
 module.exports = burgerController;
