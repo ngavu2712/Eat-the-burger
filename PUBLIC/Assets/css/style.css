@@ -2,5 +2,22 @@ body {
     background-color: burlywood;
 }
 #inputBurger {
-    margin-top: 100px;
+    margin-top:50px;
+}
+
+#burgersName {
+    height: 100px;
+    width: 300px;
+}
+
+#burgerPhoto {
+    text-align: center;
+}
+
+img{
+     margin: 40px auto;
+}
+
+#burgerAddition {
+   text-align: center;
 }
