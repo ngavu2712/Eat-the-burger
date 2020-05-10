@@ -2,32 +2,40 @@ var burgers = require('../models/burger');
 
 var express = require('express');
 
+// Create the router for the app, and export the router at the end of your file.
+var router = express.Router();
 
-function burgerController (app){
 
-app.get("/", function(req,res){
+router.get("/", function(req,res){
     burgers.selectAll(function(burgerdb){
         res.render("index", {burgers : burgerdb})
     })
 });
 
-app.post("/api/burgers", function (req,res) {
-    burgers.insertOne(['Burger_name'], [req.body.Burger_name], function(burgerdb){
-        res.redirect('/');
+//Add new burgers to burgerdb from user input
+router.post("/api/burgers", function (req,res) {
+    burgers.insertOne(['Burger_name', 'Devoured'], [req.body.Burger_name, req.body.Devoured], function(burgerdb){
+        //Send back the id of the new burger
+        res.json({id: burgerdb.insertId})
     })
 });
 
-app.put('/burgers/:id', function (req,res){
+router.put('/api/burgers/:id', function (req,res){
     var condition = 'id = ' + req.params.id;
 
-    burgers.updateOne({Devoured : true}, condition, function(burgerdb){
-        res.redirect('/');
+    burgers.updateOne({Devoured : req.body.Devoured}, condition, function(burgerdb){
+        if (burgerdb.changedRows == 0){
+            // If no rows were changed, then the ID must not exist, so 404
+            return res.status(404).end();
+        } else {
+            res.status(200).end();
+        }
     });
 });
 
 
-}
 
 
 
-module.exports = burgerController;
+
+module.exports = router;

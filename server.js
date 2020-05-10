@@ -14,15 +14,15 @@ app.set("view engine", "handlebars")
 var PORT =  process.env.PORT || 8080;
 
 // Parse application body
-app.use(express.urlencoded({extended: true}));
-app.use(express.json());
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
 // Serve static content for the app from the "public" directory in the application directory
 app.use(express.static('public'));
 
 // Import routes and give the server access to them.
-var burgerController = require('./controllers/burgerController')
-burgerController(app);
+var routes = require('./controllers/burgerController.js')
+app.use(routes);
 
 
 app.listen(PORT, function(){

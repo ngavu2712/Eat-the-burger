@@ -7,16 +7,15 @@
           </div>
     </div>
     <div class="row">
+        {{!-- Undevoured Burger --}}
         <div class="col-sm-6">
       {{#each burgers}}
         
         {{#unless this.Devoured}}
-            <div>
-                <form action="/burgers/{{this.id}}?_method=PUT" method = "POST">
-                        <button type="submit" class="devouredBtn" > {{this.Burger_name}}</button>
-                        <br>
-                </form>
-            </div>
+
+            <button type="submit" class="eatburger btn btn-warning" data-id="{{this.id}} data-newDevoured="{{Devoured}}"" >{{this.Burger_name}}</button>
+            <br>
+        
 
            
         {{/unless}}
