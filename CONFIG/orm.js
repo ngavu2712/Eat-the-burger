@@ -15,28 +15,7 @@ function printQuestionMarks (num) {
     return arr.toString();
 }
 
-//Helper function to convert object key/value pairs to SQL syntax
-function objToSql(ob) {
-    var arr = [];
-
-    // loop through the keys and push the key/value as a string int arr
-    for(var key in ob) {
-        var value = ob[Key];
-        //check to skip hidden properties
-        if (Object.hasOwnProperty.call(ob,key)) {
-            // if string with spaces, add quotations (Lana Del Grey => 'Lana Del Grey')
-            if(typeof value === "string" && value.indexOf(" ") >= 0) {
-                value = "'" + value + "'";
-            }
-            // e.g. {name: 'Lana Del Grey'} => ["name='Lana Del Grey'"]
-            // e.g. {sleepy: true} => ["sleepy=true"]
-            arr.push(key + "=" + value);
-        }
-    }
-    //translate array of strings to a single comma-separated string
-    return arr.toString();
-}
-
+ 
 var orm = {
 
     selectAll : function(tableName, dbModelCallback) {
@@ -48,12 +27,12 @@ var orm = {
         })
     },
 
-    insertOne : function(tableName, colName, values, dbModelCallback) {
+    insertOne : function(tableName, colNames, values, dbModelCallback) {
         
-        var queryString = "INSERT INTO" + tableName;
+        var queryString = "INSERT INTO  " + tableName;
 
         queryString += " ( ";
-        queryString += colName.toString();
+        queryString += colNames.toString();
         queryString += " ) ";
         queryString += "VALUES (";
         queryString += printQuestionMarks(values.length);
@@ -62,25 +41,26 @@ var orm = {
         console.log(queryString);
 
         //Connect to SQLWorkbench
-        connection.query(queryString, values, function(err, dbModelCallback){
+        connection.query(queryString, values, function(err, burgerdb){
             if (err) {throw err;}
             dbModelCallback(burgerdb)
         })
 
         
     },
-    updateOne : function(tableName, objColVals, condition, dbModelCallback) {
+    updateOne : function(tableName, colNames, values, dbModelCallback) {
         var queryString = "UPDATE " + tableName;
-        queryString += " SET ";
-        queryString += objToSql(objColVals);
-        queryString += " WHERE ";
-        queryString += condition;
+        // queryString += " SET ";
+        // queryString += objToSql(objColVals);
+        // queryString += " WHERE ";
+        // queryString += condition;
 
-        console.log(queryString);
-        connection.query(queryString, function(err, dbModelCallback) {
+        // console.log(queryString);
+     var statement =   connection.query("UPDATE ?? SET ?? = ? WHERE ?? = ?",[tableName, colNames[0], values[0], colNames[1], values[1]], function(err, burgerdb) {
             if(err) {throw err;}
+            dbModelCallback(burgerdb);
         })
-        dbModelCallback(burgerdb);
+       console.log(statement.sql)
     }
     
 }; 

@@ -13,7 +13,7 @@
         
         {{#unless this.Devoured}}
 
-            <button type="submit" class="eatburger btn btn-warning" data-id="{{this.id}} data-newDevoured="{{Devoured}}"" >{{this.Burger_name}}</button>
+            <button type="submit" class="eatburger btn btn-warning" data-id={{this.id}} data-newDevoured={{Devoured}} >{{this.Burger_name}}</button>
             <br>
         
 
@@ -41,7 +41,7 @@
 
     <div class="row" id="inputBurger">
         <div id="burgerAddition" class="col-sm-12">
-            <form action ="/burgers" method="POST">
+            <form  >
             <input type="text" id="burgersName" placeholder ="What's burger is in your mind?"> 
             <br> 
             <button id="addBurger" type="submit" class="btn btn-dark">Add Burger</button>

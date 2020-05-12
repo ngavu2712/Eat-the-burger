@@ -9,14 +9,14 @@ var burgers =
       })
     },
 
-    insertOne : function(colName, values, dbControllerCallback) {
-      orm.insertOne("burgers", colName, values, function(burgerdb){
+    insertOne : function(colNames, values, dbControllerCallback) {
+      orm.insertOne("burgers", colNames, values, function(burgerdb){
         dbControllerCallback(burgerdb)
       })
     },
 
-    updateOne : function(objColVals, condition, dbControllerCallback){
-      orm.updateOne("burgers", objColVals, condition, function(burgerdb){
+    updateOne : function(colNames, values, dbControllerCallback){
+      orm.updateOne("burgers", colNames, values, function(burgerdb){
         dbControllerCallback(burgerdb)
       })
     }
