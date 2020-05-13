@@ -23,9 +23,11 @@
     "express": "^4.17.1",
     "express-handlebars": "^4.0.4",
     "mysql": "^2.18.1",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "nodemon": "^2.0.3"
+
   },
   "devDependencies": {
-    "nodemon": "^2.0.3"
+  
   }
 }
