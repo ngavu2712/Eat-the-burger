@@ -36,3 +36,15 @@ img{
     border: 1px gray 2px;
     margin: 3px 0;
 }
+
+.eatburger {
+    margin-top: 5px;
+}
+
+#devourCol {
+    text-align: center;
+}
+
+#undevoured {
+    text-align: center;
+}

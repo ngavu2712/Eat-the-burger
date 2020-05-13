@@ -8,12 +8,14 @@
     </div>
     <div class="row">
         {{!-- Undevoured Burger --}}
-        <div class="col-sm-6">
+        <div id= "undevoured"class="col-sm-6">
       {{#each burgers}}
         
         {{#unless this.Devoured}}
 
-            <button type="submit" class="eatburger btn btn-warning" data-id={{this.id}} data-newDevoured={{Devoured}} >{{this.Burger_name}}</button>
+            <button type="submit" class="eatburger btn btn-warning" data-id={{this.id}} data-newDevoured = {{Devoured}} ><i class="fas fa-utensils"></i>
+
+{{this.Burger_name}}</button>
             <br>
         
 
@@ -24,13 +26,15 @@
       {{/each}}
 
         </div>
-        <div class="col-sm-6">
+        <div id="devourCol"class="col-sm-6">
             
          {{#each burgers}}
 
             {{#if this.Devoured}}
             
-                {{Burger_name}}
+                <ul>
+                  <button class="eatburger btn btn-warning">{{Burger_name}}</button>
+                </ul>
                 
             {{/if}}
          {{/each}}
