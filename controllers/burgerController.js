@@ -1,4 +1,4 @@
-var burgers = require('../models/burger.js');
+var burgers = require('./../models/burger.js');
 
 var express = require('express');
 
@@ -13,8 +13,8 @@ router.get("/", function(req,res){
 });
 
 //Add new burgers to burgerdb from user input
-// router.post("/api/burgers", function (req,res) {
-router.post("/burgers", function (req,res) {
+router.post("/api/burgers", function (req,res) {
+//router.post("/burgers", function (req,res) {
     req.body.Devoured = false;
     burgers.insertOne(['Burger_name', 'Devoured'], [req.body.Burger_name, req.body.Devoured], function(burgerdb){
         //Send back the id of the new burger
