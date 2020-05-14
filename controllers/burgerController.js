@@ -1,4 +1,4 @@
-var burgers = require('./models/burger.js');
+var burgers = require('./../models/burger');
 
 var express = require('express');
 
