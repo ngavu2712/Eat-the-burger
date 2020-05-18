@@ -1,7 +1,6 @@
 // Import ORM
-const fs = require('fs');
-const path = require('path');
-const orm = require(__dirname + '../config/orm.js');
+
+const orm = require('../config/orm.js');
 
 var burgers = 
 {
